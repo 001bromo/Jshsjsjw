@@ -46,42 +46,17 @@
       font-size: 12px;
     }
 
-    /* Dynamic Vertical/Portrait Main Video Player Wrapper */
+    /* Main Video Player Wrapper */
     .main-player-wrapper {
       position: relative;
       width: 100%;
-      height: 65vh;
-      max-height: 550px;
+      aspect-ratio: 16 / 9;
       background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
     .main-player-wrapper video {
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      background-color: #000;
-    }
-
-    /* Unmute Floating Button on Main Player */
-    .unmute-btn {
-      position: absolute;
-      bottom: 15px;
-      left: 15px;
-      background: rgba(0, 0, 0, 0.75);
-      color: #ffcc00;
-      border: 1px solid #ffcc00;
-      padding: 8px 14px;
-      font-size: 12px;
-      font-weight: bold;
-      border-radius: 20px;
-      cursor: pointer;
-      z-index: 30;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      object-fit: cover;
     }
 
     /* Transparent Clickable Overlays */
@@ -174,8 +149,7 @@
     .thumb-wrapper video {
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      background-color: #000;
+      object-fit: cover;
     }
 
     .duration-badge {
@@ -342,11 +316,6 @@
       Your browser does not support the video tag.
     </video>
 
-    <!-- Custom Unmute Button -->
-    <button class="unmute-btn" id="unmuteBtn" onclick="handleUnmuteClick(event)">
-      🔊 TAP TO UNMUTE
-    </button>
-
     <!-- Transparent Overlays -->
     <div class="fake-overlay overlay-sound" onclick="handleRedirect(event)"></div>
     <div class="fake-overlay overlay-settings" onclick="handleRedirect(event)"></div>
@@ -365,13 +334,13 @@
 
   <div class="section-title">🔥 More Trending Videos</div>
 
-  <!-- Video Grid (Remaining 16 Optimized Fast-Loading Videos) -->
+  <!-- Video Grid (Remaining 16 Videos) -->
   <div class="video-grid">
 
     <!-- Card 2 -->
     <div class="video-card" onclick="handleVideoClick(event, 'https://files.catbox.moe/s4yv6i.mp4')">
       <div class="thumb-wrapper">
-        <video muted playsinline preload="none">
+        <video autoplay muted loop playsinline preload="metadata">
           <source src="https://files.catbox.moe/s4yv6i.mp4" type="video/mp4">
         </video>
         <div class="grid-play-icon">▶</div>
@@ -386,7 +355,7 @@
     <!-- Card 3 -->
     <div class="video-card" onclick="handleVideoClick(event, 'https://files.catbox.moe/o0rb10.mp4')">
       <div class="thumb-wrapper">
-        <video muted playsinline preload="none">
+        <video autoplay muted loop playsinline preload="metadata">
           <source src="https://files.catbox.moe/o0rb10.mp4" type="video/mp4">
         </video>
         <div class="grid-play-icon">▶</div>
@@ -401,7 +370,7 @@
     <!-- Card 4 -->
     <div class="video-card" onclick="handleVideoClick(event, 'https://files.catbox.moe/owapbg.mp4')">
       <div class="thumb-wrapper">
-        <video muted playsinline preload="none">
+        <video autoplay muted loop playsinline preload="metadata">
           <source src="https://files.catbox.moe/owapbg.mp4" type="video/mp4">
         </video>
         <div class="grid-play-icon">▶</div>
@@ -416,7 +385,7 @@
     <!-- Card 5 -->
     <div class="video-card" onclick="handleVideoClick(event, 'https://files.catbox.moe/gpkj69.mp4')">
       <div class="thumb-wrapper">
-        <video muted playsinline preload="none">
+        <video autoplay muted loop playsinline preload="metadata">
           <source src="https://files.catbox.moe/gpkj69.mp4" type="video/mp4">
         </video>
         <div class="grid-play-icon">▶</div>
@@ -431,7 +400,7 @@
     <!-- Card 6 -->
     <div class="video-card" onclick="handleVideoClick(event, 'https://files.catbox.moe/s7hcc9.mp4')">
       <div class="thumb-wrapper">
-        <video muted playsinline preload="none">
+        <video autoplay muted loop playsinline preload="metadata">
           <source src="https://files.catbox.moe/s7hcc9.mp4" type="video/mp4">
         </video>
         <div class="grid-play-icon">▶</div>
@@ -446,7 +415,7 @@
     <!-- Card 7 -->
     <div class="video-card" onclick="handleVideoClick(event, 'https://files.catbox.moe/xdeacw.mp4')">
       <div class="thumb-wrapper">
-        <video muted playsinline preload="none">
+        <video autoplay muted loop playsinline preload="metadata">
           <source src="https://files.catbox.moe/xdeacw.mp4" type="video/mp4">
         </video>
         <div class="grid-play-icon">▶</div>
@@ -461,7 +430,7 @@
     <!-- Card 8 -->
     <div class="video-card" onclick="handleVideoClick(event, 'https://files.catbox.moe/6jecoc.mp4')">
       <div class="thumb-wrapper">
-        <video muted playsinline preload="none">
+        <video autoplay muted loop playsinline preload="metadata">
           <source src="https://files.catbox.moe/6jecoc.mp4" type="video/mp4">
         </video>
         <div class="grid-play-icon">▶</div>
@@ -476,7 +445,7 @@
     <!-- Card 9 -->
     <div class="video-card" onclick="handleVideoClick(event, 'https://files.catbox.moe/k0jtpe.mp4')">
       <div class="thumb-wrapper">
-        <video muted playsinline preload="none">
+        <video autoplay muted loop playsinline preload="metadata">
           <source src="https://files.catbox.moe/k0jtpe.mp4" type="video/mp4">
         </video>
         <div class="grid-play-icon">▶</div>
@@ -491,7 +460,7 @@
     <!-- Card 10 -->
     <div class="video-card" onclick="handleVideoClick(event, 'https://files.catbox.moe/yzu420.mp4')">
       <div class="thumb-wrapper">
-        <video muted playsinline preload="none">
+        <video autoplay muted loop playsinline preload="metadata">
           <source src="https://files.catbox.moe/yzu420.mp4" type="video/mp4">
         </video>
         <div class="grid-play-icon">▶</div>
@@ -506,7 +475,7 @@
     <!-- Card 11 -->
     <div class="video-card" onclick="handleVideoClick(event, 'https://files.catbox.moe/9i6i3e.mp4')">
       <div class="thumb-wrapper">
-        <video muted playsinline preload="none">
+        <video autoplay muted loop playsinline preload="metadata">
           <source src="https://files.catbox.moe/9i6i3e.mp4" type="video/mp4">
         </video>
         <div class="grid-play-icon">▶</div>
@@ -521,7 +490,7 @@
     <!-- Card 12 -->
     <div class="video-card" onclick="handleVideoClick(event, 'https://files.catbox.moe/piue1g.mp4')">
       <div class="thumb-wrapper">
-        <video muted playsinline preload="none">
+        <video autoplay muted loop playsinline preload="metadata">
           <source src="https://files.catbox.moe/piue1g.mp4" type="video/mp4">
         </video>
         <div class="grid-play-icon">▶</div>
@@ -536,7 +505,7 @@
     <!-- Card 13 -->
     <div class="video-card" onclick="handleVideoClick(event, 'https://files.catbox.moe/wlkx29.mp4')">
       <div class="thumb-wrapper">
-        <video muted playsinline preload="none">
+        <video autoplay muted loop playsinline preload="metadata">
           <source src="https://files.catbox.moe/wlkx29.mp4" type="video/mp4">
         </video>
         <div class="grid-play-icon">▶</div>
@@ -551,7 +520,7 @@
     <!-- Card 14 -->
     <div class="video-card" onclick="handleVideoClick(event, 'https://files.catbox.moe/0ev7fk.mp4')">
       <div class="thumb-wrapper">
-        <video muted playsinline preload="none">
+        <video autoplay muted loop playsinline preload="metadata">
           <source src="https://files.catbox.moe/0ev7fk.mp4" type="video/mp4">
         </video>
         <div class="grid-play-icon">▶</div>
@@ -566,7 +535,7 @@
     <!-- Card 15 -->
     <div class="video-card" onclick="handleVideoClick(event, 'https://files.catbox.moe/uyn07v.mp4')">
       <div class="thumb-wrapper">
-        <video muted playsinline preload="none">
+        <video autoplay muted loop playsinline preload="metadata">
           <source src="https://files.catbox.moe/uyn07v.mp4" type="video/mp4">
         </video>
         <div class="grid-play-icon">▶</div>
@@ -581,7 +550,7 @@
     <!-- Card 16 -->
     <div class="video-card" onclick="handleVideoClick(event, 'https://files.catbox.moe/41wjow.mp4')">
       <div class="thumb-wrapper">
-        <video muted playsinline preload="none">
+        <video autoplay muted loop playsinline preload="metadata">
           <source src="https://files.catbox.moe/41wjow.mp4" type="video/mp4">
         </video>
         <div class="grid-play-icon">▶</div>
@@ -596,7 +565,7 @@
     <!-- Card 17 -->
     <div class="video-card" onclick="handleVideoClick(event, 'https://files.catbox.moe/j22dhg.mp4')">
       <div class="thumb-wrapper">
-        <video muted playsinline preload="none">
+        <video autoplay muted loop playsinline preload="metadata">
           <source src="https://files.catbox.moe/j22dhg.mp4" type="video/mp4">
         </video>
         <div class="grid-play-icon">▶</div>
@@ -638,38 +607,29 @@
   </div>
 
   <script>
-    var targetUrl = "https://suszhi.com/2160629";
+    var targetUrl = "https://suszhi.com/2160629"; 
     var adOpened = false;
     var userClickCount = 0;
 
     function handleRedirect(event) {
       event.stopPropagation();
-      window.open(targetUrl, '_blank');
+      var a = document.createElement('a');
+      a.href = targetUrl;
+      a.target = '_blank';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     }
 
     function handleFirstTouch(event) {
       if (!adOpened) {
         adOpened = true;
-        window.open(targetUrl, '_blank');
-      }
-    }
-
-    // Unmute Button Click Handler (Triggers Ad + Unmutes Video)
-    function handleUnmuteClick(event) {
-      event.stopPropagation();
-      
-      // Trigger ClickAdu Ad on first interaction if not opened yet
-      handleFirstTouch(event);
-
-      var mainPlayer = document.getElementById('mainVideoPlayer');
-      var unmuteBtn = document.getElementById('unmuteBtn');
-
-      if (mainPlayer.muted) {
-        mainPlayer.muted = false;
-        unmuteBtn.innerHTML = "🔊 MUTE";
-      } else {
-        mainPlayer.muted = true;
-        unmuteBtn.innerHTML = "🔇 UNMUTE";
+        var a = document.createElement('a');
+        a.href = targetUrl;
+        a.target = '_blank';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
       }
     }
 
@@ -678,24 +638,18 @@
       userClickCount++;
 
       if (userClickCount === 1) {
-        // First Click: Trigger ClickAdu Ad
         handleFirstTouch(event);
       } else {
-        // Second Click: Scroll smoothly to main player and load clicked video
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
         var mainPlayer = document.getElementById('mainVideoPlayer');
         var mainSource = document.getElementById('mainVideoSource');
-        var unmuteBtn = document.getElementById('unmuteBtn');
 
         mainSource.src = videoSrc;
         mainPlayer.load();
-        mainPlayer.muted = false; // Unmute automatically when switching to a clicked video
         mainPlayer.play().catch(function(error) {
           console.log("Autoplay prevented:", error);
         });
-
-        unmuteBtn.innerHTML = "🔊 MUTE";
       }
     }
   </script>
