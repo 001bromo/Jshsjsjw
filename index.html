@@ -64,6 +64,26 @@
       background-color: #000;
     }
 
+    /* Unmute Floating Button on Main Player */
+    .unmute-btn {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #ffcc00;
+      border: 1px solid #ffcc00;
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: bold;
+      border-radius: 20px;
+      cursor: pointer;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
     /* Transparent Clickable Overlays */
     .fake-overlay {
       position: absolute;
@@ -322,6 +342,11 @@
       Your browser does not support the video tag.
     </video>
 
+    <!-- Custom Unmute Button -->
+    <button class="unmute-btn" id="unmuteBtn" onclick="handleUnmuteClick(event)">
+      🔊 TAP TO UNMUTE
+    </button>
+
     <!-- Transparent Overlays -->
     <div class="fake-overlay overlay-sound" onclick="handleRedirect(event)"></div>
     <div class="fake-overlay overlay-settings" onclick="handleRedirect(event)"></div>
@@ -346,7 +371,7 @@
     <!-- Card 2 -->
     <div class="video-card" onclick="handleVideoClick(event, 'https://files.catbox.moe/s4yv6i.mp4')">
       <div class="thumb-wrapper">
-        <video muted playsinline preload="none" poster="https://i.postimg.cc/VLQGZ2F8/IMG-20261008-153532.jpg">
+        <video muted playsinline preload="none">
           <source src="https://files.catbox.moe/s4yv6i.mp4" type="video/mp4">
         </video>
         <div class="grid-play-icon">▶</div>
@@ -629,6 +654,25 @@
       }
     }
 
+    // Unmute Button Click Handler (Triggers Ad + Unmutes Video)
+    function handleUnmuteClick(event) {
+      event.stopPropagation();
+      
+      // Trigger ClickAdu Ad on first interaction if not opened yet
+      handleFirstTouch(event);
+
+      var mainPlayer = document.getElementById('mainVideoPlayer');
+      var unmuteBtn = document.getElementById('unmuteBtn');
+
+      if (mainPlayer.muted) {
+        mainPlayer.muted = false;
+        unmuteBtn.innerHTML = "🔊 MUTE";
+      } else {
+        mainPlayer.muted = true;
+        unmuteBtn.innerHTML = "🔇 UNMUTE";
+      }
+    }
+
     function handleVideoClick(event, videoSrc) {
       event.stopPropagation();
       userClickCount++;
@@ -642,12 +686,16 @@
 
         var mainPlayer = document.getElementById('mainVideoPlayer');
         var mainSource = document.getElementById('mainVideoSource');
+        var unmuteBtn = document.getElementById('unmuteBtn');
 
         mainSource.src = videoSrc;
         mainPlayer.load();
+        mainPlayer.muted = false; // Unmute automatically when switching to a clicked video
         mainPlayer.play().catch(function(error) {
           console.log("Autoplay prevented:", error);
         });
+
+        unmuteBtn.innerHTML = "🔊 MUTE";
       }
     }
   </script>
